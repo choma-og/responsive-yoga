@@ -4,7 +4,6 @@ const navMenu = document.getElementById('nav-menu'),
     navClose = document.getElementById('nav-close')
 
 /*===== MENU SHOW =====*/
-/* Validate if constant exists */
 if(navToggle){
     navToggle.addEventListener('click', () =>{
         navMenu.classList.add('show-menu')
@@ -12,7 +11,6 @@ if(navToggle){
 }
 
 /*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
 if(navClose){
     navClose.addEventListener('click', () =>{
         navMenu.classList.remove('show-menu')
@@ -24,6 +22,7 @@ const navLink = document.querySelectorAll('.nav__link')
 const linkAction = () =>{
     const navMenu = document.getElementById('nav-menu')
     // When we click on each nav__link, we remove the show-menu class
+    // Когда мы нажимаем на каждую ссылку nav, мы удаляем класс show-menu
     navMenu.classList.remove('show-menu')
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
@@ -32,6 +31,7 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 const blurHeader = () =>{
     const header = document.getElementById('header')
     // When the scroll is greater than 50 viewport height, add the blur-header class to the header tag
+    // Когда прокрутка превышает высоту области просмотра 50, добавляем класс blur-header
     this.scrollY >= 50 ? header.classList.add('blur-header') 
                        : header.classList.remove('blur-header')
 }
@@ -41,6 +41,7 @@ window.addEventListener('scroll', blurHeader)
 const scrollUp = () => {
     const scrollUp = document.getElementById('scroll-up')
     // When the scroll is higher than 350 viewport height, add the show-scroll class to the a tag with the scrollup class
+    // Когда прокрутка превышает высоту окна просмотра 350, добавляем класс show-scroll
     this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
         : scrollUp.classList.remove('show-scroll')
 }
@@ -68,6 +69,30 @@ const scrollActive = () => {
 window.addEventListener('scroll', scrollActive)
 
 /*=============== DARK LIGHT THEME ===============*/ 
+const themeButton = document.getElementById('theme-button')
+const darkTheme = 'dark-theme'
+const iconTheme = 'ri-sun-line'
+const selectedTheme = localStorage.getItem('selected-theme')
+const selectedIcon = localStorage.getItem('selected-icon')
 
+// получаем текущую тему интерфейса, проверяя класс темной темы.
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line'
+
+// проверяем, выбрал ли пользователь ранее тему
+if (selectedTheme) {
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+    themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme)
+}
+
+// Активировать/деактивировать тему вручную кнопкой
+themeButton.addEventListener('click', () => {
+    // Добавить удалить темную тему / иконку
+    document.body.classList.toggle(darkTheme)
+    themeButton.classList.toggle(iconTheme)
+    // Сохраняем тему и текущую иконку, которую выбрал пользователь
+    localStorage.setItem('selected-theme', getCurrentTheme())
+    localStorage.setItem('selected-icon', getCurrentIcon())
+})
 
 /*=============== SCROLL REVEAL ANIMATION ===============*/

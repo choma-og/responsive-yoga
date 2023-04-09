@@ -80,6 +80,7 @@ button {
 body {
   background-color: var(--body-color);
   color: var(--text-color);
+  transition: background .4s;
 }
 
 h1, h2, h3, h4 {
@@ -101,17 +102,52 @@ img {
 }
 
 /*=============== THEME ===============*/
-
-
+.nav__buttons {
+  display: flex;
+  align-items: center;
+  column-gap: 1.25rem;
+}
+.change-theme {
+  font-size: 1.5rem;
+  color: var(--title-color);
+  cursor: pointer;
+}
 /*========== Variables Dark theme ==========*/
-
+body.dark-theme {
+  --title-color: hsl(260, 64%, 85%);
+  --text-color: hsl(260, 20%, 65%);
+  --body-color: hsl(260, 64%, 10%);
+  --container-color: hsl(260, 32%, 24%);
+}
 
 /*========== 
-	Color changes in some parts of 
-	the website, in dark theme
+Изменение цвета
 ==========*/
-
-
+.dark-theme .blur-header::after,
+.dark-theme .nav__menu {
+  background-color: hsla(0, 0%, 10%, .3);
+}
+.dark-theme .list__blob {
+  background-color: var(--container-color);
+}
+.dark-theme :is(.follow__content-1, .follow__content-2) img {
+  border: 5ps solid var(--container-color);
+}
+.dark-theme .join__input {
+  color: hsl(260, 80%, 18%);
+}
+.dark-theme .footer {
+  background-color: var(--body-color);
+}
+.dark-theme::-webkit-scrollbar {
+  background-color: hsl(260, 32%, 15%);
+}
+.dark-theme::-webkit-scrollbar-thumb {
+  background-color: hsl(260, 16%, 25%);
+}
+.dark-theme::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(260, 16%, 35%);
+}
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
   max-width: 1120px;
@@ -146,6 +182,7 @@ img {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
+  transition: background .4s;
 }
 .nav {
   height: var(--header-height);
@@ -349,6 +386,7 @@ img {
   background-color: var(--first-color-light);
   justify-content: center;
   align-items: center;
+  transition: background .4s;
 }
 .list__blob img {
   width: 180px;
@@ -416,6 +454,7 @@ img {
   align-items: center;
   column-gap: .5rem;
   position: absolute;
+  transition: background .4s;
 }
 .health__icon {
   background-color: hsl(2, 100%, 95%);
@@ -479,6 +518,7 @@ img {
   left: 0;
   z-index: 1;
   border: 5px solid var(--body-color);
+  transition: border .4s;
 }
 .routine__img-2 {
   right: 0;
@@ -495,6 +535,7 @@ img {
   display: flex;
   align-items: center;
   column-gap: .5rem;
+  transition: background .4s;
 }
 .routine__title,
 .routine__icon {
@@ -552,6 +593,7 @@ img {
 .follow__content-2 img{
   border-radius: 12.5rem;
   border: 5px solid var(--first-color-light);
+  transition: border .4s;
 }
 .follow__content-1 {
   grid-template-columns: repeat(2, 1fr);
