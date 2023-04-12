@@ -141,4 +141,4 @@ https://twitter.com/
 https://www.youtube.com/
 
 .footer__copy
-&#169; Copyright Bedimcode. All rights reserved
+&#169; Copyright choma. All rights reserved
